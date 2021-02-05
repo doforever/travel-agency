@@ -58,6 +58,7 @@ const prodConfig = () => ({
     rules: [
       {
         test:/\.(s*)css$/,
+        include: [/flexboxgrid/, path.resolve(__dirname, 'node_modules/'), path.resolve(__dirname, 'src/')],
         use:[
           MiniCssExtractPlugin.loader,
           {
