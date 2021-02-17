@@ -6,16 +6,17 @@ import OrderSummary from '../OrderSummary/OrderSummary';
 import OrderOption from '../OrderOption/OrderOption';
 
 import {Row, Col} from 'react-flexbox-grid';
+import styles from './OrderForm.scss';
 
 const OrderForm = ({tripCost, options, setOrderOption}) => {
   return (
-    <Row>
+    <Row className={styles.row}>
       {pricing.map(option => (
-        <Col key={option.id} md={4}>
+        <Col key={option.id} md={4} className={styles.column}>
           <OrderOption {...option} currentValue={options[option.id]} setOrderOption={setOrderOption}/>
         </Col>
       ))}
-      <Col xs={12}>
+      <Col xs={12} className={styles.column}>
         <OrderSummary cost={tripCost} options={options}/>
       </Col>
     </Row>

@@ -14,7 +14,7 @@ const OrderOptionDropdown = ({values, required, currentValue, setOptionValue}) =
       <option key='null' value=''>---</option>
     )}
     {values.map(value => (
-      <option key={value.id} value={value.id}>{value.name} ({formatPrice(value.price)})</option>
+      <option key={value.id} value={value.id} className={styles.option}>{value.name} ({formatPrice(value.price)})</option>
     ))}
   </select>
 );

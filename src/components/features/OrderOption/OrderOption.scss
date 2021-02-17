@@ -9,18 +9,19 @@
 }
 
 .input, .dropdown {
-  width: 80%;
+  width: 100%;
   border: 1px solid lighten($color-dark, 60%);
   padding: ($base-size / 2);
 
   &Small {
     width: 30%;
+    margin-right: ($base-size / 2);
   }
 }
 
 .icon {
   cursor: pointer;
-  width: 80%;
+  width: 100%;
   padding: ($base-size / 2);
 
   i {
@@ -35,4 +36,10 @@
 .checkboxes {
   display: flex;
   flex-direction: column;
+
+  label {
+    input {
+      margin-right: ($base-size / 2);
+    }
+  }
 }
