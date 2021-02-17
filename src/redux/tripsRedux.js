@@ -2,12 +2,17 @@
 
 export const getAllTrips = ({trips}) => trips;
 
-export const getFilteredTrips = ({trips, filters}) => {
+export const getFilteredTrips = ({trips, filters, regions}) => {
   let output = trips;
+  const region = regions[filters.region] || null;
 
   if(filters.searchPhrase){
     const pattern = new RegExp(filters.searchPhrase, 'i');
     output = output.filter(trip => pattern.test(trip.name));
+  }
+
+  if(region){
+    output = output.filter(trip => region.countries.includes(trip.country.code));
   }
 
   output = output.filter(trip => trip.days <= filters.duration.to && trip.days >= filters.duration.from);
