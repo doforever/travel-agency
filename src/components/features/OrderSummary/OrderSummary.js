@@ -5,10 +5,20 @@ import {formatPrice} from '../../../utils/formatPrice';
 
 import styles from './OrderSummary.scss';
 
-const OrderSummary = ({cost, options}) => {
+const OrderSummary = ({cost, days, options}) => {
+  const startDate = options['start-date'];
+  let endDate = new Date();
+  if (startDate) endDate.setDate(startDate.getDate() + days);
+
   return (
     <div className={styles.component}>
-      {/* <h2>Start date {options['start-date']}</h2> */}
+      {startDate ?
+        <div>
+          <h3>Start date: {startDate.toLocaleDateString()}</h3>
+          <h3>End date: {endDate.toLocaleDateString()}</h3>
+        </div>
+        : ''
+      }
       <h2>Total <strong>{formatPrice(calculateTotal(cost, options))}</strong></h2>
     </div>
   );
@@ -16,6 +26,7 @@ const OrderSummary = ({cost, options}) => {
 
 OrderSummary.propTypes = {
   cost: PropTypes.string,
+  days: PropTypes.number,
   options: PropTypes.object,
 };
 
