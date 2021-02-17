@@ -7,7 +7,10 @@ import styles from './OrderSummary.scss';
 
 const OrderSummary = ({cost, options}) => {
   return (
-    <h2 className={styles.component}>Total <strong>{formatPrice(calculateTotal(cost, options))}</strong></h2>
+    <div className={styles.component}>
+      {/* <h2>Start date {options['start-date']}</h2> */}
+      <h2>Total <strong>{formatPrice(calculateTotal(cost, options))}</strong></h2>
+    </div>
   );
 };
 
