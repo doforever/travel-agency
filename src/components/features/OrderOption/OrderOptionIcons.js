@@ -7,9 +7,14 @@ import Icon from '../../common/Icon/Icon';
 import styles from './OrderOption.scss';
 
 const OrderOptionIcons = ({values, required, setOptionValue, currentValue}) => (
-  <div className={styles.dropdown}>
+  <div>
     {required ? '' : (
-      <div onClick={() => setOptionValue('')}><Icon name='time-circle'/> none</div>
+      <div
+        onClick={() => setOptionValue('')}
+        className={styles.icon}>
+        <Icon name='time-circle'/>
+        none
+      </div>
     )}
     {values.map(value => (
       <div
