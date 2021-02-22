@@ -41,9 +41,17 @@ const sendOrder = (order, tripCost) => {
 
 const validateOrder = order => {
   let validity = true;
-  if(order.options.contact === '') validity = false;
-  if(order.options.name === '') validity = false;
+  for (let method in validationMethods) {
+    if(!validationMethods[method](order.options[method])){
+      validity = false;
+    }
+  }
   return validity;
+};
+
+const validationMethods = {
+  contact: value => !(value === ''),
+  name: value => !(value === ''),
 };
 
 const OrderForm = ({ tripCost, days, options, order, setOrderOption}) => {
@@ -68,7 +76,8 @@ const OrderForm = ({ tripCost, days, options, order, setOrderOption}) => {
             {...option}
             currentValue={options[option.id]}
             setOrderOption={setOrderOption}
-            showValidation={!isValid}/>
+            showValidation={!isValid}
+            validationMethod={validationMethods[option.id]}/>
         </Col>
       ))}
       <Col xs={12} className={styles.column}>

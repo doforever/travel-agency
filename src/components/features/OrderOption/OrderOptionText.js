@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import styles from './OrderOption.scss';
 
-const OrderOptionText = ({setOptionValue, currentValue, required, showValidation}) => {
+const OrderOptionText = ({setOptionValue, currentValue, required, showValidation, validationMethod}) => {
 
   const isValid = () => {
-    return !(required && currentValue === '');
+    return !(required && !validationMethod(currentValue));
   };
 
   const showInvalid = () => {
@@ -27,6 +27,7 @@ OrderOptionText.propTypes = {
   currentValue: PropTypes.string,
   required: PropTypes.bool,
   showValidation: PropTypes.bool,
+  validationMethod: PropTypes.func,
 };
 
 export default OrderOptionText;
