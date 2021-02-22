@@ -24,6 +24,7 @@ const initialState = {
   order: {
     trip: null,
     email: '',
+    isValid: true,
     options: {},
   },
 };

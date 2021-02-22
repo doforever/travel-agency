@@ -17,6 +17,10 @@
     width: 30%;
     margin-right: ($base-size / 2);
   }
+
+  &Invalid {
+    border-color: ($color-danger);
+  }
 }
 
 .icon {

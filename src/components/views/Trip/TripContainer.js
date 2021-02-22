@@ -2,6 +2,7 @@ import {connect} from 'react-redux';
 import Trip from './Trip';
 import {getTripById} from '../../../redux/tripsRedux';
 import {getCountryByCode} from '../../../redux/countriesRedux';
+import {changeOrder} from '../../../redux/orderRedux';
 
 const mapStateToProps = (state, props) => {
   const trip = getTripById(state, props.match.params.id);
@@ -13,4 +14,8 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps)(Trip);
+const mapDispatchToProps = (dispatch) => ({
+  setOrder: value => dispatch(changeOrder(value)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Trip);

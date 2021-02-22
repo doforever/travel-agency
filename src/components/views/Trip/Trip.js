@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import HTMLParser from 'react-html-parser';
 
@@ -15,7 +15,11 @@ import OrderForm from '../../features/OrderForm/OrderFormContainer';
 import styles from './Trip.scss';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 
-const Trip = ({error, name, image, cost, days, description, country, intro}) => {
+const Trip = ({error, name, id, image, cost, days, description, country, intro, setOrder}) => {
+  useEffect(() => {
+    setOrder({trip: {name, id, countryCode: country.alpha3Code}});
+  });
+
   if(error) return <NotFound />;
   else return (
     <Section>
@@ -44,7 +48,7 @@ const Trip = ({error, name, image, cost, days, description, country, intro}) => 
         <Row>
           <Col xs={12}>
             <PageTitle text='Trip options' />
-            <OrderForm tripCost={cost} days={days} />
+            <OrderForm tripCost={cost} days={days}/>
           </Col>
         </Row>
       </Grid>
@@ -81,11 +85,13 @@ const Trip = ({error, name, image, cost, days, description, country, intro}) => 
 
 Trip.propTypes = {
   name: PropTypes.string,
+  id: PropTypes.string,
   image: PropTypes.string,
   cost: PropTypes.string,
   days: PropTypes.number,
   description: PropTypes.string,
   country: PropTypes.object,
+  setOrder: PropTypes.func,
 };
 
 export default Trip;
