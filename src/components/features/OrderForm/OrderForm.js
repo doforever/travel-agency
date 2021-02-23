@@ -40,13 +40,12 @@ const sendOrder = (order, tripCost) => {
 };
 
 const validateOrder = order => {
-  let validity = true;
   for (let method in validationMethods) {
     if(!validationMethods[method](order.options[method])){
-      validity = false;
+      return false;
     }
   }
-  return validity;
+  return true;
 };
 
 const validationMethods = {
