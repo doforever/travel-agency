@@ -1,7 +1,7 @@
 @import '../../../styles/settings.scss';
 
 .row {
-  margin: 0 -($base-size * 2);
+  margin: 0 (-$base-size * 2);
 }
 
 .column {
