@@ -16,12 +16,15 @@
       margin-right: ($base-size * 3);
       padding-bottom: ($base-size / 2);
       transition: color 0.4s linear;
+
       &:last-of-type {
         margin-right: 0;
       }
+
       &:hover {
         color: $color-primary;
       }
+
       &:global(.active) {
         border-bottom: 4px solid $color-primary;
       }
@@ -45,15 +48,7 @@
   font-size: ($base-size * 1.5);
 }
 
-.contact {
-  text-align: right;
-  span {
-    padding-left: $base-size;
-  }
-}
-
 @media (max-width: 767px) {
-
   .component  {
     text-align: center;
 
@@ -62,10 +57,4 @@
     }
 
   }
-
-  .contact {
-    text-align: center;
-    margin-top: ($base-size * 1.5);
-  }
-
 }

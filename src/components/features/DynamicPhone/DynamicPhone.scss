@@ -1,0 +1,17 @@
+@import '../../../styles/settings.scss';
+
+.component {
+  text-align: right;
+
+  .phone {
+    padding-left: $base-size;
+  }
+}
+
+@media (max-width: 767px) {
+  .component {
+    text-align: center;
+    margin-top: ($base-size * 1.5);
+  }
+
+}
