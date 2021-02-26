@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {calculateTotal} from '../../../utils/calculateTotal';
 import {formatPrice} from '../../../utils/formatPrice';
+import {promoPrice} from '../../../utils/promoPrice';
 
 import styles from './OrderSummary.scss';
 
@@ -9,6 +10,7 @@ const OrderSummary = ({cost, days, options}) => {
   const startDate = options['start-date'];
   let endDate = new Date();
   if (startDate) endDate.setDate(startDate.getDate() + days);
+  const price = calculateTotal(cost, options);
 
   return (
     <div className={styles.component}>
@@ -19,7 +21,8 @@ const OrderSummary = ({cost, days, options}) => {
         </div>
         : ''
       }
-      <h2>Total <strong>{formatPrice(calculateTotal(cost, options))}</strong></h2>
+      <h2 className={styles.promoPrice}>Price from <strong>{formatPrice(promoPrice(price, 20))}</strong></h2>
+      <h2>Standard price <strong>{formatPrice(price)}</strong></h2>
     </div>
   );
 };

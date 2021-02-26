@@ -1,5 +1,5 @@
 export const formatTime = arg => {
-  if (!arg || isNaN(arg) || arg < 0) return null;
+  if (arg === 'undefined' || isNaN(arg) || arg < 0) return null;
 
   const seconds = Math.floor(arg % 60);
   const minutes = Math.floor((arg / 60) % 60);
